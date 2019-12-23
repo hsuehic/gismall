@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>589198067629-nd313p5j7bqhi6dgkih4kebgh34ff22n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.589198067629-nd313p5j7bqhi6dgkih4kebgh34ff22n</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>589198067629-qjp3gumiunalsf7s62mei60d6v5n0d2q.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAv2pc1J9pUhWkB3OvUqrgV_mC4sSAKLQ8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>589198067629</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gismall.client</string>
+	<key>PROJECT_ID</key>
+	<string>gismall</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gismall.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:589198067629:ios:ffdf900266f04963</string>
+	<key>DATABASE_URL</key>
+	<string>https://gismall.firebaseio.com</string>
+</dict>
+</plist>

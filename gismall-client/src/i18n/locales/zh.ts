@@ -1,0 +1,22 @@
+export default {
+  account: '账号',
+  add: '添加',
+  display_name: '名称',
+  email: 'Email',
+  join_gismall: '加入GISmall',
+  login: '登录',
+  navigations: {
+    home: '首页',
+    topic: '话题',
+    about: '关于',
+    chat: '聊天',
+    profile: '概述',
+    me: '我',
+    contact: '通讯录',
+  },
+  phone_number: '手机号',
+  register: '注册',
+  sign_out: '登出',
+  submit: '提交',
+  yesterday: '昨天',
+};

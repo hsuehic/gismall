@@ -1,0 +1,30 @@
+{
+  "name": "gismall",
+  "version": "1.0.0",
+  "description": "gismall",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "lerna bootstrap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsuehic/gismall.git"
+  },
+  "keywords": [
+    "gismall",
+    "firebase",
+    "typescript",
+    "eggjs",
+    "react-native"
+  ],
+  "author": "Richard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hsuehic/gismall/issues"
+  },
+  "homepage": "https://github.com/hsuehic/gismall#readme",
+  "dependencies": {
+    "lerna": "^3.19.0"
+  }
+}

@@ -1,0 +1,22 @@
+export default {
+  account: 'Account',
+  add: 'Add',
+  display_name: 'Display Name',
+  email: 'Email',
+  join_gismall: 'Join GISmall',
+  login: 'Login',
+  navigations: {
+    about: 'About',
+    chat: 'Chat',
+    contact: 'Contact',
+    home: 'Home',
+    me: 'Me',
+    profile: 'Profile',
+    topic: 'Topic',
+  },
+  phone_number: 'Phone Number',
+  register: 'Register',
+  sign_out: 'Sign Out',
+  submit: 'Submit',
+  yesterday: 'Yesterday',
+};

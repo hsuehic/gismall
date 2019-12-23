@@ -1,0 +1,26 @@
+@headerHight: 64px;
+.container {
+  box-sizing: border-box;
+  padding-top: @headerHight;
+}
+
+.logo {
+  box-sizing: border-box;
+  height: @headerHight;
+  text-align: center;
+  color: #fff;
+  line-height: @headerHight;
+  .icon {
+    vertical-align: middle;
+    font-size: 36px;
+  }
+  .text {
+    vertical-align: middle;
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    &.collapsed {
+      display: none;
+    }
+  }
+}

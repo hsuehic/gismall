@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "packages/*",
+    "gismall-client",
+    "gismall-functions",
+    "gismall-server"
+  ],
+  "version": "0.0.1",
+  "npmClient": "yarn"
+}

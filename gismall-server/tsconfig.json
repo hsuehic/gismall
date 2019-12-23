@@ -1,0 +1,15 @@
+{
+  "extends": "./config/tsconfig.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "jsx": "react",
+    /* Experimental Options */
+    "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
+    "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
+    "strictNullChecks": false
+  },
+  "include": ["**/*.ts", "**/*.tsx", "global.d.ts", "app/react-app-env.d.ts"],
+  "exclude": ["public", "app/public", "node_modules"]
+}

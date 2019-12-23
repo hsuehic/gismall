@@ -1,0 +1,21 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    // Highly Recommended
+    "eamodio.gitlens",
+    "wayou.vscode-todo-highlight",
+    "dbaeumer.vscode-eslint",
+    "alexdima.copy-relative-path",
+    "esbenp.prettier-vscode",
+    "clinyong.vscode-css-modules",
+    "bajdzis.vscode-database",
+    "atian25.eggjs",
+    "yuzukwok.eggjs-dev-tools",
+
+    // Optional
+    "esbenp.prettier-vscode",
+    "spywhere.guides",
+    "hangxingliu.vscode-coding-tracker"
+  ]
+}

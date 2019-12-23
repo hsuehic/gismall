@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+}
+
+.left {
+  flex: auto;
+}
+
+.right {
+  flex: auto;
+  text-align: right;
+  align-items: center;
+}
+
+.account {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+  vertical-align: top;
+  line-height: 64px;
+}
+
+.dropDown {
+  padding: 0 16px;
+  cursor: pointer;
+  font-size: 14px;
+  vertical-align: top;
+  line-height: 64px;
+
+  > svg {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.menu {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+
+  :global(.ant-dropdown-menu-item) {
+    width: 160px;
+  }
+}

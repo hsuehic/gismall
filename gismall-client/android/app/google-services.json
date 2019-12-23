@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "589198067629",
+    "firebase_url": "https://gismall.firebaseio.com",
+    "project_id": "gismall",
+    "storage_bucket": "gismall.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589198067629:android:ffdf900266f04963",
+        "android_client_info": {
+          "package_name": "com.gismall.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589198067629-jak6k1hm00qmkqg537o3phjfj6bk67lk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gismall.client",
+            "certificate_hash": "11d79cc256aeb3f284f36b03ae4737b0a27c5658"
+          }
+        },
+        {
+          "client_id": "589198067629-qjp3gumiunalsf7s62mei60d6v5n0d2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gismall.client",
+            "certificate_hash": "9a83e5bb97a98d3a18bc5e5464cc9417afd63bf7"
+          }
+        },
+        {
+          "client_id": "589198067629-2dojudrt0622uinnoehumt7pmin5u853.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_r4ADlcTf7QEQSeECqpwwbloasENkq4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589198067629-2dojudrt0622uinnoehumt7pmin5u853.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589198067629-nd313p5j7bqhi6dgkih4kebgh34ff22n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gismall.client"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
