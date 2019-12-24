@@ -1,6 +1,8 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
+import userApp from './user';
+
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -24,12 +26,55 @@ export const generateUser = functions.auth
           providerId: user.providerData[0].providerId,
           uid: user.uid,
         });
-      return await admin
+
+      await admin
+        .firestore()
+        .collection('counter')
+        .doc(`contact-${user.uid}`)
+        .set({
+          count: 0,
+        });
+
+      await admin
         .firestore()
         .collection('counter')
         .doc('user')
         .update({
           count: admin.firestore.FieldValue.increment(1),
+        });
+    },
+  );
+
+export const increaseContactCount = functions.firestore
+  .document('contacts/{owerUid}/contact/{contactUid}')
+  .onCreate(
+    async (
+      _snap: FirebaseFirestore.DocumentSnapshot,
+      context: functions.EventContext,
+    ) => {
+      const { ownerUid } = context.params;
+      await admin
+        .firestore()
+        .doc(`counter/contact-${ownerUid}`)
+        .update({
+          count: admin.firestore.FieldValue.increment(1),
+        });
+    },
+  );
+
+export const decreaseContactCount = functions.firestore
+  .document('contacts/{ownerUid}/contact/{contactUid}')
+  .onDelete(
+    async (
+      _snap: FirebaseFirestore.DocumentSnapshot,
+      context: functions.EventContext,
+    ) => {
+      const { ownerUid } = context.params;
+      await admin
+        .firestore()
+        .doc(`counter/contact-${ownerUid}`)
+        .update({
+          count: admin.firestore.FieldValue.increment(-1),
         });
     },
   );
@@ -41,6 +86,12 @@ export const deleteUser = functions.auth
       .firestore()
       .collection('users')
       .doc(user.uid)
+      .delete();
+
+    await admin
+      .firestore()
+      .collection('couter')
+      .doc(`contact-${user.uid}`)
       .delete();
 
     return await admin
@@ -68,3 +119,5 @@ export const getUsers = functions.https.onRequest(
     });
   },
 );
+
+export const users = functions.https.onRequest(userApp);

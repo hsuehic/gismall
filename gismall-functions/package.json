@@ -13,12 +13,18 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "firebase-admin": "^8.8.0",
     "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
+    "@types/body-parser": "*",
+    "@types/cors": "^2.8.6",
+    "@types/express": "*",
     "firebase-functions-test": "^0.1.6",
-    "typescript": "^3.2.2"
+    "typescript": "^3.7.0"
   },
   "private": true
 }
