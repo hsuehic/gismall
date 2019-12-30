@@ -1,0 +1,9 @@
+src/**/__tests__/**
+*.test.tsx
+app/Locales
+app/mock
+config-overrides.js
+jest.config.js
+serviceWorker.ts
+config
+scripts

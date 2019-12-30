@@ -1,5 +1,15 @@
-export function getPathname(requestPath: string): string {
+function getPathname(requestPath: string): string {
   return decodeURIComponent(requestPath.split('?')[0]);
 }
 
-export default { getPathname };
+const defaultResponse = {
+  code: 0,
+  error: 0,
+  errorMsg: '',
+  data: {},
+};
+
+export default {
+  getPathname,
+  defaultResponse,
+};

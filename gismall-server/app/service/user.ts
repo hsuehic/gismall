@@ -48,6 +48,20 @@ export default class UserService extends Service {
   }
 
   /**
+   * Update User claims
+   * @param uid {string} user id
+   * @param data {object} claims
+   */
+  public async updateUserClaims<T extends {}>(uid: string, data: T) {
+    await admin.auth().setCustomUserClaims(uid, data);
+    return {
+      code: 0,
+      error: 0,
+      errorMsg: null,
+    };
+  }
+
+  /**
    * Delete user by uid
    * @param uid {string} user id
    */

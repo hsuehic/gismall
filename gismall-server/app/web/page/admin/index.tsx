@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { BrowserRouter, StaticRouter } from 'react-router-dom';
+
+import { initFirebase } from '../../utils/firebase';
+
 import Layout from '../../framework/layout';
 import { PageMetas } from '../../../typings/type';
 import { createAdminReduxStore } from '../../redux/store';
@@ -37,8 +40,15 @@ function bootstrap() {
   if (EASY_ENV_IS_NODE) {
     return App;
   }
-
-  const state = window.__INITIAL_STATE__;
+  initFirebase();
+  const {
+    csrf,
+    title,
+    keywords,
+    description,
+    location,
+    ...state
+  } = window.__INITIAL_STATE__;
   const store = createAdminReduxStore(false, state);
   const root = document.getElementById('app');
   if (EASY_ENV_IS_DEV) {
@@ -50,7 +60,7 @@ function bootstrap() {
           </BrowserRouter>
         </AppContainer>
       </Provider>,
-      root,
+      root
     );
     if (module.hot) {
       module.hot.accept();
@@ -62,7 +72,7 @@ function bootstrap() {
           <AdminApp />
         </BrowserRouter>
       </Provider>,
-      root,
+      root
     );
   }
 }

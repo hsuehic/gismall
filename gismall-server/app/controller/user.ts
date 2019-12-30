@@ -1,10 +1,13 @@
 import { Controller } from 'egg';
-import { route } from 'egg-controller';
+import { route, controller } from 'egg-controller';
 import * as admin from 'firebase-admin';
-
+@controller({
+  name: 'user related APIs',
+  prefix: '/admin',
+})
 export default class UserController extends Controller {
   @route({
-    url: '/api/users',
+    url: 'api/users',
     method: 'get',
     validateMetaInfo: [
       {
@@ -28,7 +31,7 @@ export default class UserController extends Controller {
   }
 
   @route({
-    url: '/api/users',
+    url: 'api/users',
     method: 'post',
     validateMetaInfo: [
       {
@@ -64,7 +67,7 @@ export default class UserController extends Controller {
   }
 
   @route({
-    url: '/api/users/:uid',
+    url: 'api/users/:uid',
     method: 'patch',
   })
   public async updateUser(uid: string, data: Partial<admin.auth.UserRecord>) {
@@ -72,7 +75,23 @@ export default class UserController extends Controller {
   }
 
   @route({
-    url: '/api/users/:uid',
+    url: 'api/users/:uid/claims',
+    method: 'patch',
+    validateMetaInfo: [
+      {
+        name: 'data',
+        rule: {
+          type: 'object',
+        },
+      },
+    ],
+  })
+  public async updateUserClaims<T extends {}>(uid: string, data: T) {
+    return await this.ctx.service.user.updateUserClaims(uid, data);
+  }
+
+  @route({
+    url: 'api/users/:uid',
     method: 'delete',
   })
   public async deleteUser(uid: string) {
@@ -80,7 +99,7 @@ export default class UserController extends Controller {
   }
 
   @route({
-    url: '/api/users/sync',
+    url: 'api/users/sync',
     method: 'get',
   })
   public async syncUsers() {

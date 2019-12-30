@@ -29,8 +29,8 @@ function Layout({ title, keywords, description, themeStyle, children }: Props) {
       </head>
       <body style={{ ...themeStyle }}>
         <div id="app">{children}</div>
-        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-        <script src="/asset/js/firebase.js"></script>
+        {/* <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script> */}
+        {/* <script src="/asset/js/firebase.js"></script> */}
       </body>
     </html>
   );

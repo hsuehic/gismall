@@ -3,9 +3,11 @@
 
 import 'egg';
 import ExportAccess from '../../../app/middleware/access';
+import ExportAuth from '../../../app/middleware/auth';
 
 declare module 'egg' {
   interface IMiddleware {
     access: typeof ExportAccess;
+    auth: typeof ExportAuth;
   }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "egg-react-typescript-boilerplate",
+  "name": "gismall-server",
   "version": "3.3.0",
-  "description": "基于 egg + react + typescript + webpack 服务端渲染工程骨架项目",
+  "description": "SSR Application with seperated admin portal and user interface base on typescript,eggjs,React,firebase ",
   "scripts": {
     "start": "egg-scripts start",
     "dev": "egg-bin dev -r egg-ts-helper/register",
@@ -20,6 +20,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/preset-typescript": "^7.7.7",
     "@types/classnames": "^2.2.9",
+    "@types/koa": "^2.11.0",
     "@types/react-redux": "^7.1.4",
     "@types/redux": "^3.6.0",
     "classnames": "^2.2.6",
@@ -37,6 +38,7 @@
     "firebase-admin": "^8.8.0",
     "firebaseui": "^4.3.0",
     "history": "^4.7.2",
+    "koa": "^2.11.0",
     "lodash": "^4.17.4",
     "mockjs": "^1.0.1-beta3",
     "moment": "^2.17.1",
@@ -50,7 +52,8 @@
     "react-router-redux": "^4.0.8",
     "react-with-firebase-auth": "^1.2.0",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
