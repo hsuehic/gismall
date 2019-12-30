@@ -1,10 +1,11 @@
-import { Controller } from 'egg';
+import { Controller, Context } from 'egg';
 import { route, controller } from 'egg-controller';
 
 import createAuthMiddleware from '../middleware/auth';
+import { ROLE } from '../typings/common';
 
 @controller({
-  middleware: [],
+  middleware: [createAuthMiddleware(['administrator'])],
 })
 export default class HomeController extends Controller {
   private async renderPageWithBasicInfo<T extends {}>(state?: T) {
@@ -25,11 +26,15 @@ export default class HomeController extends Controller {
 
   @route('/admin/login')
   public async login() {
+    const { ctx } = this;
+    if (ctx.role === ROLE.administrator) {
+      ctx.redirect('/admin');
+    }
     await this.renderPageWithBasicInfo();
   }
 
   @route('/admin/:mid*', {
-    middleware: [createAuthMiddleware(['administrator'])],
+    middleware: [],
   })
   public async index() {
     await this.renderPageWithBasicInfo();

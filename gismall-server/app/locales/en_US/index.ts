@@ -4,4 +4,5 @@ export default {
   new_users: 'New Users',
   title: 'GISMall',
   users: 'Users',
+  logout: 'Logout',
 };

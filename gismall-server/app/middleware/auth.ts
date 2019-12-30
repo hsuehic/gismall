@@ -20,7 +20,10 @@ export default (allowedRoles: string[]) => {
           const { role, username } = claims;
           ctx.role = role;
           ctx.username = username;
-          if (allowedRoles.indexOf(role) === -1) {
+          if (
+            ctx.request.path !== '/amdin/login' &&
+            allowedRoles.indexOf(role) === -1
+          ) {
             ctx.body = { error: 403, message: 'Permission Denied!' };
             ctx.status = 403;
           } else {
@@ -30,12 +33,19 @@ export default (allowedRoles: string[]) => {
           ctx.cookies.set(COOKIE_ADMIN_AUTH_NAME, '', {
             maxAge: -1,
           });
-          ctx.redirect('/admin/login');
+          if (ctx.request.path !== '/amdin/login') {
+            ctx.redirect('/admin/login');
+          }
         }
       } else {
-        ctx.body = { error: 401, message: 'No authentication' };
-        ctx.status = 401;
-        ctx.redirect('/admin/login');
+        if (ctx.request.path !== '/admin/login') {
+          ctx.redirect('/admin/login');
+        } else if (ctx.request.path.indexOf('/api/') > -1) {
+          ctx.body = { error: 401, message: 'No authentication' };
+          ctx.status = 401;
+        } else {
+          await next();
+        }
       }
     };
   };

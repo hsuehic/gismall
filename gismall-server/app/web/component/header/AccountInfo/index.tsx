@@ -1,9 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
 import { Avatar } from 'antd';
-
-import { AdminState } from '../../../../typings/common';
+import firebase from 'firebase';
 
 import styles from './index.module.less';
 interface Props {
@@ -11,22 +9,25 @@ interface Props {
 }
 
 export default function AccountInfo(props: Props) {
-  const { username = '', picture = '' } =
-    useSelector((state: AdminState) => {
-      return state.currentUser;
-    }) || {};
+  const { displayName, photoURL, email } = firebase.auth()
+    .currentUser as firebase.User;
+  const name = displayName || email || 'A';
   return (
     <a
       className={cx(styles.container, 'antd-dropdown-link', props.className)}
       href="#"
     >
-      <Avatar
-        size="small"
-        className={styles.avatar}
-        src={picture}
-        alt="avatar"
-      />
-      <span className={styles.name}>{username}</span>
+      {photoURL ? (
+        <Avatar
+          size="small"
+          className={styles.avatar}
+          src={photoURL}
+          alt="avatar"
+        />
+      ) : (
+        <div className={styles.avatar}>{name.substr(0, 1).toUpperCase()}</div>
+      )}
+      <span className={styles.name}>{name}</span>
     </a>
   );
 }

@@ -26,7 +26,13 @@ export interface FailedHttpResponse {
   code: number;
 }
 
-type Role = 'administrator' | 'customer';
+export const ROLE = {
+  administrator: 'administrator',
+  customer: 'customer',
+  anonymous: 'anonymouse',
+};
+
+export type Role = keyof typeof ROLE;
 export interface CustomClaims {
   role?: Role;
   username?: string;
