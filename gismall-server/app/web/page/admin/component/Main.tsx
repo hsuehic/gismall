@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 import {
   Switch,
   Route,
@@ -7,13 +7,13 @@ import {
   RouteComponentProps,
 } from 'react-router';
 import { Icon, Layout } from 'antd';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 import cx from 'classnames';
 
 import HeaderComp from '../../../component/header';
 import Navigation from '../../../component/navigation';
-import { URL_ADMIN_LOGIN } from '../../../../constant';
+// import { URL_ADMIN_LOGIN } from '../../../../constant';
 
 import styles from './Main.module.less';
 
@@ -22,15 +22,25 @@ function Main({ history }: RouteComponentProps) {
   const [collapsed, setCollapsed] = useState(false);
   const leftNaviWidth = 240;
   const leftNaviCollapsedWidth = 80;
-  const currentUser = firebase.auth().currentUser;
-  if (!currentUser) {
-    history.push(URL_ADMIN_LOGIN);
-  }
+  // execute this only when is running on client side
+  // if (!EASY_ENV_IS_NODE) {
+  //   const currentUser = firebase.auth().currentUser;
+  //   if (!currentUser) {
+  //     history.push(URL_ADMIN_LOGIN);
+  //   }
+  // }
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header className={styles.header}>
-        <div className={styles.logo}>
+        <div
+          className={styles.logo}
+          style={{
+            width: collapsed
+              ? `${leftNaviCollapsedWidth}px`
+              : `${leftNaviWidth}px`,
+          }}
+        >
           <span className={styles.icon}>
             <Icon type="chrome" />
           </span>

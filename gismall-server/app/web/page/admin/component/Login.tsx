@@ -41,7 +41,7 @@ function Login({ form, history }: Props) {
   const [isLoging, setIsLoging] = useState(false);
 
   const verifyUser = async () => {
-    const token = await firebase.auth().currentUser?.getIdToken(true);
+    const token = await firebase.auth().currentUser?.getIdToken();
     const response = await post<CustomClaims>('/admin/api/v3/verify', {
       token: token,
     });

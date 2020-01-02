@@ -9,9 +9,11 @@ interface Props {
 }
 
 export default function AccountInfo(props: Props) {
-  const { displayName, photoURL, email } = firebase.auth()
-    .currentUser as firebase.User;
-  const name = displayName || email || 'A';
+  // const { displayName, photoURL, email } = firebase.auth()
+  //   .currentUser as firebase.User;
+  // const name = displayName || email || 'A';
+  const name = 'Xiaowei';
+  const photoURL = '';
   return (
     <a
       className={cx(styles.container, 'antd-dropdown-link', props.className)}
