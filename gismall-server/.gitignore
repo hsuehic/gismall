@@ -31,3 +31,4 @@ app/view/*
 !app/view/README.md
 !app/view/.gitkeep
 cert
+./typings
