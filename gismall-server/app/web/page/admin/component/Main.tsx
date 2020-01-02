@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router';
+import React, { useState, useReducer } from 'react';
+import {
+  Switch,
+  Route,
+  Redirect,
+  withRouter,
+  RouteComponentProps,
+} from 'react-router';
 import { Icon, Layout } from 'antd';
+import firebase from 'firebase';
 
 import cx from 'classnames';
 
 import HeaderComp from '../../../component/header';
 import Navigation from '../../../component/navigation';
+import { URL_ADMIN_LOGIN } from '../../../../constant';
 
-import styles from './App.module.less';
+import styles from './Main.module.less';
 
 const { Content, Header, Sider } = Layout;
-export default function Main() {
+function Main({ history }: RouteComponentProps) {
   const [collapsed, setCollapsed] = useState(false);
   const leftNaviWidth = 240;
   const leftNaviCollapsedWidth = 80;
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    history.push(URL_ADMIN_LOGIN);
+  }
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={setCollapsed}
-        width={leftNaviWidth}
-        collapsedWidth={leftNaviCollapsedWidth}
-        style={{
-          position: 'fixed',
-          left: 0,
-          overflow: 'auto',
-          height: '100vh',
-        }}
-      >
+      <Header className={styles.header}>
         <div className={styles.logo}>
           <span className={styles.icon}>
             <Icon type="chrome" />
@@ -38,29 +38,29 @@ export default function Main() {
             GISMall
           </span>
         </div>
-        <Navigation />
-      </Sider>
+        <HeaderComp />
+      </Header>
+      {}
       <Layout
         style={{
           marginLeft: collapsed ? leftNaviCollapsedWidth : leftNaviWidth,
         }}
       >
-        <Header
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={setCollapsed}
+          width={leftNaviWidth}
+          collapsedWidth={leftNaviCollapsedWidth}
           style={{
-            zIndex: 999,
             position: 'fixed',
-            marginLeft: collapsed ? leftNaviCollapsedWidth : leftNaviWidth,
-            width: collapsed
-              ? `calc(100% - ${leftNaviCollapsedWidth}px)`
-              : `calc(100% - ${leftNaviWidth}px)`,
-            background: '#fff',
-            padding: 0,
-            height: '64px',
             left: 0,
+            overflow: 'auto',
+            height: '100vh',
           }}
         >
-          <HeaderComp />
-        </Header>
+          <Navigation />
+        </Sider>
         <Content className={styles.container}>
           <Switch>
             <Route path="/admin">
@@ -73,3 +73,5 @@ export default function Main() {
     </Layout>
   );
 }
+
+export default withRouter(Main);

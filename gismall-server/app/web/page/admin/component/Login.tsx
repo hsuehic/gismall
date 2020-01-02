@@ -39,6 +39,21 @@ const itemButtonLayout = {
 function Login({ form, history }: Props) {
   const { getFieldDecorator, validateFields } = form;
   const [isLoging, setIsLoging] = useState(false);
+
+  const verifyUser = async () => {
+    const token = await firebase.auth().currentUser?.getIdToken(true);
+    const response = await post<CustomClaims>('/admin/api/v3/verify', {
+      token: token,
+    });
+    if (response.data) {
+      if (response.data.role === 'administrator') {
+        history.replace('/admin');
+      } else {
+        message.error('Please log in with a administrator user!');
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.panelLogin}>
@@ -57,22 +72,7 @@ function Login({ form, history }: Props) {
                   try {
                     const auth = firebase.auth();
                     await auth.signInWithEmailAndPassword(email, password);
-                    const token = await auth.currentUser?.getIdToken(true);
-                    const response = await post<CustomClaims>(
-                      '/admin/api/v3/verify',
-                      {
-                        token: token,
-                      }
-                    );
-                    if (response.data) {
-                      if (response.data.role === 'administrator') {
-                        history.replace('/admin');
-                      } else {
-                        message.error(
-                          'Please log in with a administrator user!'
-                        );
-                      }
-                    }
+                    await verifyUser();
                     setIsLoging(true);
                   } catch (ex) {
                     message.error(ex);
@@ -142,6 +142,17 @@ function Login({ form, history }: Props) {
                 htmlType="button"
                 className={styles.btnLoginWithGoogle}
                 icon="google"
+                onClick={async () => {
+                  try {
+                    const provider = new firebase.auth.GoogleAuthProvider();
+                    provider.addScope('profile');
+                    provider.addScope('email');
+                    await firebase.auth().signInWithPopup(provider);
+                    await verifyUser();
+                  } catch (err) {
+                    message.error(err.message);
+                  }
+                }}
               >
                 Google
               </Button>
@@ -150,6 +161,19 @@ function Login({ form, history }: Props) {
                 htmlType="button"
                 className={styles.btnLoginWithFacebook}
                 icon="facebook"
+                onClick={async () => {
+                  try {
+                    const provider = new firebase.auth.FacebookAuthProvider();
+                    provider.addScope('email');
+                    provider.setCustomParameters({
+                      display: 'popup',
+                    });
+                    await firebase.auth().signInWithPopup(provider);
+                    await verifyUser();
+                  } catch (err) {
+                    message.error(err.message);
+                  }
+                }}
               >
                 Facebook
               </Button>

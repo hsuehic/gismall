@@ -1,13 +1,9 @@
-import { UserInfo } from 'firebase';
-
 export interface HomeState {
   locale: Locale;
-  currentUser: UserInfo;
 }
 
 export interface AdminState {
   locale: Locale;
-  currentUser?: UserInfo;
 }
 
 export type HttpResponse<T> = SuccessHttpResponse<T> | FailedHttpResponse;
@@ -26,10 +22,11 @@ export interface FailedHttpResponse {
   code: number;
 }
 
+// default roles
 export const ROLE = {
   administrator: 'administrator',
   customer: 'customer',
-  anonymous: 'anonymouse',
+  system: 'system',
 };
 
 export type Role = keyof typeof ROLE;

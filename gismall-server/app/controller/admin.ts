@@ -12,6 +12,6 @@ export default class HomeController extends Controller {
   })
   public async index() {
     const { ctx } = this;
-    await ctx.helper.renderAdminPageWithMeta(ctx);
+    await ctx.helper.renderAdminPageWithMeta();
   }
 }

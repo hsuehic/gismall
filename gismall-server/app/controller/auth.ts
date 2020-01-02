@@ -8,6 +8,10 @@ import { CustomClaims, ROLE } from '../typings/common';
 const loginPath = '/admin/login';
 
 export default class AuthController extends Controller {
+  /**
+   * Validate user login by the token
+   * @param token {string}
+   */
   @route({
     url: '/admin/api/v3/verify',
     method: 'post',
@@ -37,7 +41,6 @@ export default class AuthController extends Controller {
       ctx.cookies.set(COOKIE_ADMIN_AUTH_NAME, session, {
         maxAge: expiresIn,
         httpOnly: true,
-        secure: true,
       });
 
       return {
@@ -48,6 +51,7 @@ export default class AuthController extends Controller {
         },
       };
     } catch (error) {
+      ctx.logger.error(error);
       return {
         code: 1,
         error: 1,
@@ -56,13 +60,16 @@ export default class AuthController extends Controller {
     }
   }
 
+  /**
+   * Render html document of user login page
+   */
   @route('/admin/login')
   public async login() {
     const { ctx } = this;
     if (ctx.role === ROLE.administrator) {
       ctx.redirect('/admin');
     }
-    await ctx.helper.renderAdminPageWithMeta(ctx);
+    await ctx.helper.renderAdminPageWithMeta();
   }
 
   @route('/admin/logout')

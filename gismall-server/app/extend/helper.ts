@@ -1,10 +1,22 @@
-import { Context } from 'egg';
+import { Context, IHelper } from 'egg';
 
+/**
+ * get pathname from request url
+ * @param requestPath {string} path name with query string
+ */
 function getPathname(requestPath: string): string {
   return decodeURIComponent(requestPath.split('?')[0]);
 }
 
-async function renderAdminPageWithMeta<T extends {}>(ctx: Context, state?: T) {
+export function getUrlClaims() {}
+
+/**
+ * Render admin page html
+ * @param ctx {egg.Context} context of the request
+ * @param state {any} states for the renderer
+ */
+async function renderAdminPageWithMeta<T extends {}>(this: IHelper, state?: T) {
+  const { ctx } = this;
   const locale = ctx.cookies.get('locale') || 'en-US';
   await ctx.render('admin.js', {
     title: 'Gismall Admin',
@@ -19,7 +31,13 @@ async function renderAdminPageWithMeta<T extends {}>(ctx: Context, state?: T) {
   });
 }
 
-async function renderHomePageWithMeta<T extends {}>(ctx: Context, state?: T) {
+/**
+ * Render home page html
+ * @param ctx {egg.Context} context of the request
+ * @param state {any} states for the renderer
+ */
+async function renderHomePageWithMeta<T extends {}>(this: IHelper, state?: T) {
+  const { ctx } = this;
   const locale = ctx.cookies.get('locale') || 'en-US';
   await ctx.render('home.js', {
     title: 'Gismall Home',
@@ -34,6 +52,9 @@ async function renderHomePageWithMeta<T extends {}>(ctx: Context, state?: T) {
   });
 }
 
+/**
+ * default api response structure
+ */
 const defaultResponse = {
   code: 0,
   error: 0,
