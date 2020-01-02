@@ -54,7 +54,7 @@ export function AccountMenu(): React.FunctionComponentElement<{}> {
         if (e.key === 'logout') {
           top.location.href = '/logout';
         } else if (e.key === 'account') {
-          top.location.href = 'https://people.seagroup.com/';
+          top.location.href = '/admin/profile';
         }
       }}
     >
@@ -114,7 +114,7 @@ const mapStateToProps = ({ locale }: { locale: string }): InjectedProps => {
 };
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<{}, {}, AnyAction>,
+  dispatch: ThunkDispatch<{}, {}, AnyAction>
 ): DispatchProps => {
   return {
     setLocale: (locale: string): Action =>

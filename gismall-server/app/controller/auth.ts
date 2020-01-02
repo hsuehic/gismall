@@ -3,7 +3,9 @@ import { route } from 'egg-controller';
 import * as admin from 'firebase-admin';
 
 import { COOKIE_ADMIN_AUTH_NAME } from '../constant';
-import { CustomClaims } from '../typings/common';
+import { CustomClaims, ROLE } from '../typings/common';
+
+const loginPath = '/admin/login';
 
 export default class AuthController extends Controller {
   @route({
@@ -19,7 +21,7 @@ export default class AuthController extends Controller {
       },
     ],
   })
-  async login(token: string) {
+  async verifyLogin(token: string) {
     const { ctx } = this;
     const auth = admin.auth();
     try {
@@ -27,15 +29,19 @@ export default class AuthController extends Controller {
         token
       )) as unknown) as CustomClaims;
       const { role, username } = claims;
-
+      const expiresIn = 1000 * 60 * 24 * 30;
       const session = await auth.createSessionCookie(token, {
-        expiresIn: 1000 * 60 * 24 * 30,
+        expiresIn: expiresIn,
       });
 
-      ctx.cookies.set(COOKIE_ADMIN_AUTH_NAME, session);
+      ctx.cookies.set(COOKIE_ADMIN_AUTH_NAME, session, {
+        maxAge: expiresIn,
+        httpOnly: true,
+        secure: true,
+      });
 
       return {
-        ...this.ctx.helper.defaultResponse,
+        ...ctx.helper.defaultResponse,
         data: {
           role,
           username,
@@ -47,6 +53,38 @@ export default class AuthController extends Controller {
         error: 1,
         errorMsg: error,
       };
+    }
+  }
+
+  @route('/admin/login')
+  public async login() {
+    const { ctx } = this;
+    if (ctx.role === ROLE.administrator) {
+      ctx.redirect('/admin');
+    }
+    await ctx.helper.renderAdminPageWithMeta(ctx);
+  }
+
+  @route('/admin/logout')
+  async logout() {
+    const { ctx } = this;
+    const sessionCookie = ctx.cookies.get(COOKIE_ADMIN_AUTH_NAME);
+    ctx.cookies.set(COOKIE_ADMIN_AUTH_NAME, null);
+    if (sessionCookie) {
+      admin
+        .auth()
+        .verifySessionCookie(sessionCookie)
+        .then(decodedClaims => {
+          return admin.auth().revokeRefreshTokens(decodedClaims.uid);
+        })
+        .then(() => {
+          ctx.redirect(loginPath);
+        })
+        .catch(() => {
+          ctx.redirect(loginPath);
+        });
+    } else {
+      ctx.redirect(loginPath);
     }
   }
 }
