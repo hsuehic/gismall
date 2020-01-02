@@ -15,7 +15,6 @@
 - http://hubcarl.github.io/easywebpack/react
 - https://www.yuque.com/easy-team/egg-react
 
-
 ## 3. 特性
 
 - 支持 Egg Node 端代码和前端代码 TypeScript 编写和构建
@@ -25,13 +24,12 @@
 - 支持 server 和 client 端代码修改, Webpack 时时编译和热更新, `npm run dev` 一键启动应用
 
 - 支持开发环境, 测试环境，正式环境 Webpack 编译
- 
 
 ## 4. 依赖
 
 - [easywebpack-react](https://github.com/hubcarl/easywebpack)
-- [egg-view-react-ssr](https://github.com/hubcarl/egg-view-react-ssr) 
-- [egg-webpack](https://github.com/hubcarl/egg-webpack) 
+- [egg-view-react-ssr](https://github.com/hubcarl/egg-view-react-ssr)
+- [egg-webpack](https://github.com/hubcarl/egg-webpack)
 - [egg-webpack-react](https://github.com/hubcarl/egg-webpack-react)
 
 ## 5. 使用
@@ -70,6 +68,9 @@ npm run build
 2. 项目代码和构建代码一起打包代码
 3. 应用部署后，通过 `npm start` 启动应用
 
+## 备注
+
+1. SSR 中， firebase 相关的方法不能执行，
 
 ## License
 
