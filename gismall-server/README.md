@@ -1,4 +1,4 @@
-# egg-react-typescript-boilerplate
+# Gismall Server
 
 基于 Egg + React + TypeScript + Webpack 服务端渲染工程骨架
 
