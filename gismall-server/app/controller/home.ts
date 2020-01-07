@@ -4,6 +4,6 @@ export default class HomeController extends Controller {
   @route('/')
   public async index() {
     const { ctx } = this;
-    await ctx.helper.renderHomePageWithMeta(ctx);
+    await ctx.helper.renderHomePageWithMeta();
   }
 }
