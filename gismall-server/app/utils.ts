@@ -31,3 +31,19 @@ export const union = <T extends string | number>(...args: Array<T[]>): T[] => {
   });
   return [...t];
 };
+
+/**
+ * Get the common elements of all arrays
+ * @param args {Array<Array<string|number>>} input arrays
+ */
+export const intersect = <T extends string | number>(
+  ...args: Array<T[]>
+): T[] => {
+  const m = new Map<T, number>();
+  args.forEach((arr: T[]) => {
+    arr.forEach((i: T) => {
+      m.set(i, (m.get(i) || 0) + 1);
+    });
+  });
+  return [...m.keys()];
+};
