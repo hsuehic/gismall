@@ -14,7 +14,8 @@
     "fix": "tslint --fix --project . -c tslint.json",
     "ii": "npm install",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md  -s",
-    "test": "jest --passWithNoTests"
+    "test-fe": "jest --passWithNoTests",
+    "test-be": "egg-bin test"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
@@ -77,6 +78,7 @@
     "easywebpack-cli": "^4.0.0",
     "easywebpack-react": "^4.0.0",
     "egg-bin": "^4.7.1",
+    "egg-mock": "^3.25.0",
     "egg-ts-helper": "^1.9.0",
     "egg-webpack": "^4.0.0",
     "egg-webpack-react": "^2.0.0",
@@ -98,7 +100,8 @@
     "typescript": "^3.7.0"
   },
   "egg": {
-    "typescript": true
+    "typescript": true,
+    "declarations": true
   },
   "engines": {
     "node": ">=8.0.0"

@@ -11,5 +11,11 @@
     "strictNullChecks": false
   },
   "include": ["**/*.ts", "**/*.tsx", "global.d.ts", "app/react-app-env.d.ts"],
-  "exclude": ["public", "app/public", "node_modules"]
+  "exclude": [
+    "public",
+    "app/public",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
 }

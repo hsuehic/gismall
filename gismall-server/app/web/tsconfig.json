@@ -9,5 +9,5 @@
   },
   "files": ["../../global.d.ts", "../react-app-env.d.ts"],
   "include": ["./page/**/**.tsx", "page/home/store/config.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.tsx", "**/*.test.ts"]
 }
