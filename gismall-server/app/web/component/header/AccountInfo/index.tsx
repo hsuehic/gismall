@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import { Avatar } from 'antd';
-import firebase from 'firebase';
 
 import styles from './index.module.less';
 interface Props {
@@ -9,9 +8,6 @@ interface Props {
 }
 
 export default function AccountInfo(props: Props) {
-  // const { displayName, photoURL, email } = firebase.auth()
-  //   .currentUser as firebase.User;
-  // const name = displayName || email || 'A';
   const name = 'Xiaowei';
   const photoURL = '';
   return (
