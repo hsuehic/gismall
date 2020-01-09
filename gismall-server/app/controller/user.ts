@@ -1,9 +1,11 @@
 import { Controller } from 'egg';
 import { route, controller } from 'egg-controller';
 import * as admin from 'firebase-admin';
+import createAuthMiddleware from '../middleware/auth';
 @controller({
   name: 'user related APIs',
   prefix: '/admin',
+  middleware: [createAuthMiddleware(['administrator'])],
 })
 export default class UserController extends Controller {
   @route({

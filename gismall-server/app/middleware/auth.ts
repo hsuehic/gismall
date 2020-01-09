@@ -38,11 +38,11 @@ export default (allowedRoles: string[]) => {
           }
         }
       } else {
-        if (ctx.request.path !== '/admin/login') {
-          ctx.redirect('/admin/login');
-        } else if (ctx.request.path.indexOf('/api/') > -1) {
+        if (ctx.request.path.indexOf('/api/') > -1) {
           ctx.body = { error: 401, message: 'No authentication' };
           ctx.status = 401;
+        } else if (ctx.request.path !== '/admin/login') {
+          ctx.redirect('/admin/login');
         } else {
           await next();
         }

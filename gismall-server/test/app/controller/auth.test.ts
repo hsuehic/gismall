@@ -1,6 +1,6 @@
 import { app } from 'egg-mock/bootstrap';
 
-describe('Auth controller', () => {
+describe('app/controller/auth.ts', () => {
   it('Get /admin/login', async () => {
     await app
       .httpRequest()

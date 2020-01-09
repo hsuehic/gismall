@@ -7,7 +7,7 @@ import createAuthMiddleware from '../middleware/auth';
   middleware: [createAuthMiddleware(['administrator'])],
 })
 export default class HomeController extends Controller {
-  @route('/admin/:mid*', {
+  @route('/admin', {
     middleware: [],
   })
   public async index() {
