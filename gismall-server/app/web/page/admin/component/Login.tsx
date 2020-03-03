@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Icon, Input, Button, Checkbox, message } from 'antd';
 import { withRouter, RouteComponentProps } from 'react-router';
 
 import { post } from '../../../utils/fetch';
 
 import styles from './Login.module.less';
-import { WrappedFormUtils } from 'antd/lib/form/Form';
+import { WrappedFormUtils } from '@ant-design/compatible/lib/form/Form';
 import { CustomClaims } from '../../../../typings/common';
 
 interface InjectedProps {
