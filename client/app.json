@@ -1,0 +1,21 @@
+{
+  "name": "promotion",
+  "displayName": "promotion",
+  "expo": {
+    "name": "promotion",
+    "slug": "promotion",
+    "privacy": "unlisted",
+    "sdkVersion": "36.0.0",
+    "version": "1.0.0",
+    "entryPoint": "node_modules/expo/AppEntry.js",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": ["js", "jsx", "ts", "tsx", "less", "scss", "sass"]
+    }
+  }
+}
